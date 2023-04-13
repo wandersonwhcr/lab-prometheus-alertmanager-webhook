@@ -6,7 +6,7 @@ services:
     image: "traefik:2.9"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`localhost`)"
+      - "traefik.http.routers.traefik.rule=Host(`my-project.localhost`)"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
     ports:
       - "80:80"
