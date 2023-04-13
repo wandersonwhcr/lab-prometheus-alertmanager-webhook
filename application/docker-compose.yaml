@@ -18,6 +18,7 @@ services:
     command: ["node", "index.js"]
     environment:
       APP_PORT: "3000"
+      REDIS_URL: "redis://redis"
 
   redis:
     image: "redis:7.0-alpine"

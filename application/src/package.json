@@ -2,6 +2,7 @@
   "name": "application",
   "version": "1.0.0-dev",
   "dependencies": {
+    "@fastify/redis": "^6.1.1",
     "fastify": "^4.15.0",
     "prom-client": "^14.2.0"
   }
