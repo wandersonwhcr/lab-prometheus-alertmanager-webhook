@@ -19,6 +19,11 @@ services:
     environment:
       APP_PORT: "3000"
 
+  redis:
+    image: "redis:7.0-alpine"
+    networks:
+      - "my-project-application"
+
 networks:
   my-project-proxy:
     name: "my-project-proxy"
