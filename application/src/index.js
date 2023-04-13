@@ -1,3 +1,4 @@
+// Prometheus --------------------------------------------------------------------------------------
 const Prometheus = require("prom-client");
 
 const register = new Prometheus.Registry();
@@ -9,6 +10,31 @@ const magicNumberGauge = new Prometheus.Gauge({
 
 register.registerMetric(magicNumberGauge);
 
-magicNumberGauge.set(10);
+// Fastify -----------------------------------------------------------------------------------------
 
-register.metrics().then(data => console.log(data));
+const fastify = require("fastify")({
+  logger: true,
+});
+
+fastify.get('/', async function(request, reply) {
+  reply.status(200)
+    .send({
+      name: "application",
+    });
+});
+
+fastify.get('/metrics', async function(request, reply) {
+  const data = await register.metrics();
+
+  reply.status(200)
+    .type(register.contentType)
+    .send(data);
+});
+
+fastify.listen({
+  host: "0.0.0.0",
+  port: process.env.APP_PORT,
+});
+
+process.on("SIGINT", () => fastify.close());
+process.on("SIGTERM", () => fastify.close());

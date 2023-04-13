@@ -16,6 +16,8 @@ services:
       - "my-project-application"
     working_dir: "/usr/local/src"
     command: ["node", "index.js"]
+    environment:
+      APP_PORT: "3000"
 
 networks:
   my-project-proxy:
