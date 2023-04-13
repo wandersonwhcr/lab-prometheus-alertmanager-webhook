@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+
+  prometheus:
+    image: "quay.io/prometheus/prometheus:v2.43.0"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.my-project.localhost`)"
+      - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
+    networks:
+      - "my-project-proxy"
+
+networks:
+  my-project-proxy:
+    name: "my-project-proxy"
+    external: true
