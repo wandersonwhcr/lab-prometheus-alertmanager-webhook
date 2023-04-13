@@ -15,6 +15,7 @@ services:
       - "my-project-proxy"
       - "my-project-application"
     working_dir: "/usr/local/src"
+    command: ["node", "index.js"]
 
 networks:
   my-project-proxy:

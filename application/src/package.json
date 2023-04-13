@@ -1,4 +1,7 @@
 {
   "name": "application",
-  "version": "1.0.0-dev"
+  "version": "1.0.0-dev",
+  "dependencies": {
+    "prom-client": "^14.2.0"
+  }
 }
