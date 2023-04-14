@@ -31,6 +31,13 @@ services:
       - "--config.file"
       - "/etc/alertmanager/alertmanager.yaml"
 
+  notifier:
+    image: "ealen/echo-server:0.7.0"
+    networks:
+      - "my-project-proxy"
+    environment:
+      PORT: "8080"
+
 networks:
   my-project-proxy:
     name: "my-project-proxy"

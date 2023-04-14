@@ -1,9 +1,10 @@
 route:
   group_by: ["..."]
   group_wait: "1s"
+  group_interval: "1s"
   receiver: "default"
 
 receivers:
 - name: "default"
   webhook_configs:
-  - url: "http://127.0.0.1:5001/"
+  - url: "http://notifier:8080/"
