@@ -31,7 +31,7 @@ docker-compose up --detach
 ```
 
 * [Prometheus](http://prometheus.my-project.localhost)
-* [AlertManager](http://alertmanager.my-project.localhost)
+* [Alertmanager](http://alertmanager.my-project.localhost)
 
 ## Configure the Magic Number
 
