@@ -3,8 +3,44 @@ route:
   group_wait: "1s"
   group_interval: "1s"
   receiver: "default"
+  routes:
+
+  - receiver: "high"
+    matchers:
+    - "severity = high"
+
+  - receiver: "highest"
+    matchers:
+    - "severity = highest"
+
+inhibit_rules:
+
+- source_matchers:
+  - "severity = highest"
+  target_matchers:
+  - "severity = high"
+  equal:
+  - "alertname"
+  - "instance"
+
+- source_matchers:
+  - "severity = high"
+  target_matchers:
+  - "severity = default"
+  equal:
+  - "alertname"
+  - "instance"
 
 receivers:
+
 - name: "default"
   webhook_configs:
-  - url: "http://notifier:8080/"
+  - url: "http://notifier:8080/?receiver=default"
+
+- name: "high"
+  webhook_configs:
+  - url: "http://notifier:8080/?receiver=high"
+
+- name: "highest"
+  webhook_configs:
+  - url: "http://notifier:8080/?receiver=highest"

@@ -2,6 +2,21 @@ groups:
 - name: "My Project Application"
   interval: "1s"
   rules:
+
   - alert: "magic_number"
-    expr: "my_project:application:magic_number > 10"
-    for: "5s"
+    expr: "my_project:application:magic_number >= 10"
+    for: "1s"
+    labels:
+      severity: "default"
+
+  - alert: "magic_number"
+    expr: "my_project:application:magic_number >= 100"
+    for: "1s"
+    labels:
+      severity: "high"
+
+  - alert: "magic_number"
+    expr: "my_project:application:magic_number >= 1000"
+    for: "1s"
+    labels:
+      severity: "highest"
