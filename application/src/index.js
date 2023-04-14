@@ -10,10 +10,10 @@ const Prometheus = require("prom-client");
 const register = new Prometheus.Registry();
 
 const magicNumberGauge = new Prometheus.Gauge({
-  name: "my_project_application_magic_number",
+  name: "my_project:application:magic_number",
   help: "My Project Application Magic Number",
   collect: async function() {
-    const value = await fastify.redis.get("application-magic-number");
+    const value = await fastify.redis.get("my_project:application:magic_number");
     this.set(Number(value));
   },
 });
