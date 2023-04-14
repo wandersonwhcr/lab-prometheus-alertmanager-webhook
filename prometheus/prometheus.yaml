@@ -5,6 +5,9 @@ scrape_configs:
   - targets:
     - "application:3000"
 
+rule_files:
+  - "/etc/prometheus/rules/*.yaml"
+
 alerting:
   alertmanagers:
   - static_configs:

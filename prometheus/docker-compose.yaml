@@ -12,6 +12,7 @@ services:
       - "my-project-proxy"
     volumes:
       - "./prometheus.yaml:/etc/prometheus/prometheus.yaml:ro"
+      - "./rules:/etc/prometheus/rules:ro"
     command:
       - "--config.file"
       - "/etc/prometheus/prometheus.yaml"

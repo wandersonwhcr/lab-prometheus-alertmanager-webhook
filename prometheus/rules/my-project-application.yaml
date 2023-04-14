@@ -1,0 +1,7 @@
+groups:
+- name: "My Project Application"
+  interval: "1s"
+  rules:
+  - alert: "magic_number"
+    expr: "my_project:application:magic_number > 10"
+    for: "5s"
