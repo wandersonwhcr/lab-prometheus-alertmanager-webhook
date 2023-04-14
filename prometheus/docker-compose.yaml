@@ -16,6 +16,20 @@ services:
       - "--config.file"
       - "/etc/prometheus/prometheus.yaml"
 
+  alertmanager:
+    image: "quay.io/prometheus/alertmanager:v0.25.0"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.alertmanager.rule=Host(`alertmanager.my-project.localhost`)"
+      - "traefik.http.services.alertmanager.loadbalancer.server.port=9093"
+    networks:
+      - "my-project-proxy"
+    volumes:
+      - "./alertmanager.yaml:/etc/alertmanager/alertmanager.yaml:ro"
+    command:
+      - "--config.file"
+      - "/etc/alertmanager/alertmanager.yaml"
+
 networks:
   my-project-proxy:
     name: "my-project-proxy"

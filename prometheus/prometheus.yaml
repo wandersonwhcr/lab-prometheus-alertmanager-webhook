@@ -4,3 +4,9 @@ scrape_configs:
   static_configs:
   - targets:
     - "application:3000"
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - "alertmanager:9093"
