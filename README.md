@@ -1,5 +1,7 @@
 # lab-prometheus-alertmanager-webhook
 
+A Laboratory for Prometheus and Alertmanager with Webhooks
+
 ## Proxy
 
 ```
