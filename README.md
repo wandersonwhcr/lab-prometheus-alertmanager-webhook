@@ -1,4 +1,4 @@
-# poc-alertmanager-channel-by-label
+# lab-prometheus-alertmanager-webhook
 
 ## Proxy
 
